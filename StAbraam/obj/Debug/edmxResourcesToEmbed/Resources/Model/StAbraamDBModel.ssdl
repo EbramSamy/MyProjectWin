@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StAbraamModel.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BuildingNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="StreetName" Type="nvarchar" MaxLength="100" />
+    <Property Name="District" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clinic">
+    <Key>
+      <PropertyRef Name="ClinicID" />
+    </Key>
+    <Property Name="ClinicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Landline" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressID" Type="int" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Diocese" Type="nvarchar" MaxLength="100" />
+    <Property Name="Speciality" Type="int" />
+    <Property Name="Sub_Speciality" Type="int" />
+    <Property Name="CurrentOccupation" Type="nvarchar" MaxLength="100" />
+    <Property Name="CurrentHospital" Type="nvarchar" MaxLength="100" />
+    <Property Name="NationalID" Type="nvarchar" MaxLength="100" />
+    <Property Name="RegistrationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Doctor_Cities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="CityID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_Clinic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="ClinicID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_CurrentService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="ServiceID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_Languages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="LanguageID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_PreferedPeriod">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="PeriodID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_Specialty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="SpecialtyID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_Sub_Specialty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="Sub_SpecialtyID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_Suggestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="SuggestionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctor_ToJoinServices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="ServiceID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="LanguagID" />
+    </Key>
+    <Property Name="LanguagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguageName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mobile">
+    <Key>
+      <PropertyRef Name="MobileID" />
+    </Key>
+    <Property Name="MobileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorID" Type="int" Nullable="false" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Period">
+    <Key>
+      <PropertyRef Name="PeriodID" />
+    </Key>
+    <Property Name="PeriodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="From" Type="datetime" Nullable="false" />
+    <Property Name="To" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Specialty">
+    <Key>
+      <PropertyRef Name="SpecialtyID" />
+    </Key>
+    <Property Name="SpecialtyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SpecialtyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sub_Specialty">
+    <Key>
+      <PropertyRef Name="Sub_SpecialtyID" />
+    </Key>
+    <Property Name="Sub_SpecialtyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sub_SpecialtyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SpecialtyID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suggestion">
+    <Key>
+      <PropertyRef Name="SuggestionID" />
+    </Key>
+    <Property Name="SuggestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Suggestion" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ServiceID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="CityForDoctor">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Doctor_Cities" Type="Self.Doctor_Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Doctor_Cities">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClinicAddress">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Clinic">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClinicForDoctor">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="Doctor_Clinic" Type="Self.Doctor_Clinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="ClinicID" />
+      </Principal>
+      <Dependent Role="Doctor_Clinic">
+        <PropertyRef Name="ClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CountryForCity">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CountryForDoctor">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Doctor_Countries" Type="Self.Doctor_Countries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Doctor_Countries">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CurrentServiceForDoctor">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Doctor_CurrentService" Type="Self.Doctor_CurrentService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="Doctor_CurrentService">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForCity">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Cities" Type="Self.Doctor_Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_Cities">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForClinic">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Clinic" Type="Self.Doctor_Clinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_Clinic">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForCountry">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Countries" Type="Self.Doctor_Countries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_Countries">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForCurrentService">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_CurrentService" Type="Self.Doctor_CurrentService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_CurrentService">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForLangauge">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Languages" Type="Self.Doctor_Languages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_Languages">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForPeriod">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_PreferedPeriod" Type="Self.Doctor_PreferedPeriod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_PreferedPeriod">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForSpeciality">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Specialty" Type="Self.Doctor_Specialty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_Specialty">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForSubSpeciality">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Sub_Specialty" Type="Self.Doctor_Sub_Specialty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_Sub_Specialty">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorForSuggestion">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Suggestion" Type="Self.Doctor_Suggestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_Suggestion">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorMobile">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Mobile" Type="Self.Mobile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mobile">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DoctorsForToJoinService">
+    <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
+    <End Role="Doctor_ToJoinServices" Type="Self.Doctor_ToJoinServices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Doctor_ToJoinServices">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageForDoctor">
+    <End Role="Language" Type="Self.Language" Multiplicity="1" />
+    <End Role="Doctor_Languages" Type="Self.Doctor_Languages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="LanguagID" />
+      </Principal>
+      <Dependent Role="Doctor_Languages">
+        <PropertyRef Name="LanguageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeriodForDoctor">
+    <End Role="Period" Type="Self.Period" Multiplicity="1" />
+    <End Role="Doctor_PreferedPeriod" Type="Self.Doctor_PreferedPeriod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Period">
+        <PropertyRef Name="PeriodID" />
+      </Principal>
+      <Dependent Role="Doctor_PreferedPeriod">
+        <PropertyRef Name="PeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServiceForDoctorToJoin">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Doctor_ToJoinServices" Type="Self.Doctor_ToJoinServices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="Doctor_ToJoinServices">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SpecialtyForDoctor">
+    <End Role="Specialty" Type="Self.Specialty" Multiplicity="1" />
+    <End Role="Doctor_Specialty" Type="Self.Doctor_Specialty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialty">
+        <PropertyRef Name="SpecialtyID" />
+      </Principal>
+      <Dependent Role="Doctor_Specialty">
+        <PropertyRef Name="SpecialtyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Sub_Specialty_Specialty">
+    <End Role="Specialty" Type="Self.Specialty" Multiplicity="1" />
+    <End Role="Sub_Specialty" Type="Self.Sub_Specialty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialty">
+        <PropertyRef Name="SpecialtyID" />
+      </Principal>
+      <Dependent Role="Sub_Specialty">
+        <PropertyRef Name="SpecialtyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubSpecialityForDoctor">
+    <End Role="Sub_Specialty" Type="Self.Sub_Specialty" Multiplicity="1" />
+    <End Role="Doctor_Sub_Specialty" Type="Self.Doctor_Sub_Specialty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sub_Specialty">
+        <PropertyRef Name="Sub_SpecialtyID" />
+      </Principal>
+      <Dependent Role="Doctor_Sub_Specialty">
+        <PropertyRef Name="Sub_SpecialtyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SuggestionForDoctor">
+    <End Role="Suggestion" Type="Self.Suggestion" Multiplicity="1" />
+    <End Role="Doctor_Suggestion" Type="Self.Doctor_Suggestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suggestion">
+        <PropertyRef Name="SuggestionID" />
+      </Principal>
+      <Dependent Role="Doctor_Suggestion">
+        <PropertyRef Name="SuggestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SuggestionService">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Suggestion" Type="Self.Suggestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="Suggestion">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StAbraamModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" store:Type="Tables" />
+    <EntitySet Name="Clinic" EntityType="Self.Clinic" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" store:Type="Tables" />
+    <EntitySet Name="Doctor" EntityType="Self.Doctor" store:Type="Tables" />
+    <EntitySet Name="Doctor_Cities" EntityType="Self.Doctor_Cities" store:Type="Tables" />
+    <EntitySet Name="Doctor_Clinic" EntityType="Self.Doctor_Clinic" store:Type="Tables" />
+    <EntitySet Name="Doctor_Countries" EntityType="Self.Doctor_Countries" store:Type="Tables" />
+    <EntitySet Name="Doctor_CurrentService" EntityType="Self.Doctor_CurrentService" store:Type="Tables" />
+    <EntitySet Name="Doctor_Languages" EntityType="Self.Doctor_Languages" store:Type="Tables" />
+    <EntitySet Name="Doctor_PreferedPeriod" EntityType="Self.Doctor_PreferedPeriod" store:Type="Tables" />
+    <EntitySet Name="Doctor_Specialty" EntityType="Self.Doctor_Specialty" store:Type="Tables" />
+    <EntitySet Name="Doctor_Sub_Specialty" EntityType="Self.Doctor_Sub_Specialty" store:Type="Tables" />
+    <EntitySet Name="Doctor_Suggestion" EntityType="Self.Doctor_Suggestion" store:Type="Tables" />
+    <EntitySet Name="Doctor_ToJoinServices" EntityType="Self.Doctor_ToJoinServices" store:Type="Tables" />
+    <EntitySet Name="Language" EntityType="Self.Language" store:Type="Tables" />
+    <EntitySet Name="Mobile" EntityType="Self.Mobile" store:Type="Tables" />
+    <EntitySet Name="Period" EntityType="Self.Period" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" store:Type="Tables" />
+    <EntitySet Name="Specialty" EntityType="Self.Specialty" store:Type="Tables" />
+    <EntitySet Name="Sub_Specialty" EntityType="Self.Sub_Specialty" store:Type="Tables" />
+    <EntitySet Name="Suggestion" EntityType="Self.Suggestion" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" />
+    <AssociationSet Name="CityForDoctor" Association="Self.CityForDoctor">
+      <End Role="City" EntitySet="City" />
+      <End Role="Doctor_Cities" EntitySet="Doctor_Cities" />
+    </AssociationSet>
+    <AssociationSet Name="ClinicAddress" Association="Self.ClinicAddress">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Clinic" EntitySet="Clinic" />
+    </AssociationSet>
+    <AssociationSet Name="ClinicForDoctor" Association="Self.ClinicForDoctor">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="Doctor_Clinic" EntitySet="Doctor_Clinic" />
+    </AssociationSet>
+    <AssociationSet Name="CountryForCity" Association="Self.CountryForCity">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="CountryForDoctor" Association="Self.CountryForDoctor">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Doctor_Countries" EntitySet="Doctor_Countries" />
+    </AssociationSet>
+    <AssociationSet Name="CurrentServiceForDoctor" Association="Self.CurrentServiceForDoctor">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Doctor_CurrentService" EntitySet="Doctor_CurrentService" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForCity" Association="Self.DoctorForCity">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_Cities" EntitySet="Doctor_Cities" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForClinic" Association="Self.DoctorForClinic">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_Clinic" EntitySet="Doctor_Clinic" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForCountry" Association="Self.DoctorForCountry">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_Countries" EntitySet="Doctor_Countries" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForCurrentService" Association="Self.DoctorForCurrentService">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_CurrentService" EntitySet="Doctor_CurrentService" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForLangauge" Association="Self.DoctorForLangauge">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_Languages" EntitySet="Doctor_Languages" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForPeriod" Association="Self.DoctorForPeriod">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_PreferedPeriod" EntitySet="Doctor_PreferedPeriod" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForSpeciality" Association="Self.DoctorForSpeciality">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_Specialty" EntitySet="Doctor_Specialty" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForSubSpeciality" Association="Self.DoctorForSubSpeciality">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_Sub_Specialty" EntitySet="Doctor_Sub_Specialty" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorForSuggestion" Association="Self.DoctorForSuggestion">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_Suggestion" EntitySet="Doctor_Suggestion" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorMobile" Association="Self.DoctorMobile">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Mobile" EntitySet="Mobile" />
+    </AssociationSet>
+    <AssociationSet Name="DoctorsForToJoinService" Association="Self.DoctorsForToJoinService">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Doctor_ToJoinServices" EntitySet="Doctor_ToJoinServices" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageForDoctor" Association="Self.LanguageForDoctor">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="Doctor_Languages" EntitySet="Doctor_Languages" />
+    </AssociationSet>
+    <AssociationSet Name="PeriodForDoctor" Association="Self.PeriodForDoctor">
+      <End Role="Period" EntitySet="Period" />
+      <End Role="Doctor_PreferedPeriod" EntitySet="Doctor_PreferedPeriod" />
+    </AssociationSet>
+    <AssociationSet Name="ServiceForDoctorToJoin" Association="Self.ServiceForDoctorToJoin">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Doctor_ToJoinServices" EntitySet="Doctor_ToJoinServices" />
+    </AssociationSet>
+    <AssociationSet Name="SpecialtyForDoctor" Association="Self.SpecialtyForDoctor">
+      <End Role="Specialty" EntitySet="Specialty" />
+      <End Role="Doctor_Specialty" EntitySet="Doctor_Specialty" />
+    </AssociationSet>
+    <AssociationSet Name="Sub_Specialty_Specialty" Association="Self.Sub_Specialty_Specialty">
+      <End Role="Specialty" EntitySet="Specialty" />
+      <End Role="Sub_Specialty" EntitySet="Sub_Specialty" />
+    </AssociationSet>
+    <AssociationSet Name="SubSpecialityForDoctor" Association="Self.SubSpecialityForDoctor">
+      <End Role="Sub_Specialty" EntitySet="Sub_Specialty" />
+      <End Role="Doctor_Sub_Specialty" EntitySet="Doctor_Sub_Specialty" />
+    </AssociationSet>
+    <AssociationSet Name="SuggestionForDoctor" Association="Self.SuggestionForDoctor">
+      <End Role="Suggestion" EntitySet="Suggestion" />
+      <End Role="Doctor_Suggestion" EntitySet="Doctor_Suggestion" />
+    </AssociationSet>
+    <AssociationSet Name="SuggestionService" Association="Self.SuggestionService">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Suggestion" EntitySet="Suggestion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0a3e624f5c844802ba8bdbbc6bfa502f" Name="Diagram1">
+        <EntityTypeShape EntityType="StAbraamModel.Address" Width="1.5" PointX="1.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.City" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Clinic" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Country" Width="1.5" PointX="1.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_Cities" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_Clinic" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_Countries" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_CurrentService" Width="1.5" PointX="6" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_Languages" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_PreferedPeriod" Width="1.5" PointX="6" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_Specialty" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_Sub_Specialty" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_Suggestion" Width="1.5" PointX="9" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Doctor_ToJoinServices" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Language" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Mobile" Width="1.5" PointX="3" PointY="43.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Period" Width="1.5" PointX="3.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Service" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Specialty" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Sub_Specialty" Width="1.5" PointX="0.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.Suggestion" Width="1.5" PointX="6.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StAbraamModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="StAbraamModel.ClinicAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.CityForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.CountryForCity" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.ClinicForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.CountryForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForCity" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForClinic" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForCurrentService" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForLangauge" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForPeriod" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForSpeciality" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForSubSpeciality" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorForSuggestion" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorMobile" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.DoctorsForToJoinService" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.CurrentServiceForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.LanguageForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.PeriodForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.SpecialtyForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.SubSpecialityForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.SuggestionForDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.ServiceForDoctorToJoin" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.SuggestionService" ManuallyRouted="false" />
+        <AssociationConnector Association="StAbraamModel.Sub_Specialty_Specialty" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

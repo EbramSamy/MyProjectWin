@@ -1,0 +1,94 @@
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\ST_ABRAAM.sdf
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\خدمة الانباء ابرام الطبية.exe.config
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\خدمة الانباء ابرام الطبية.exe
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\خدمة الانباء ابرام الطبية.pdb
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\EntityFramework.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\EntityFramework.SqlServer.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\EntityFramework.SqlServerCompact.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.Extras.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.Platform.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MahApps.Metro.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MahApps.Metro.IconPacks.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MaterialDesignColors.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MaterialDesignThemes.Wpf.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\Microsoft.Practices.ServiceLocation.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\System.Data.SqlServerCe.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\System.Windows.Interactivity.dll
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\EntityFramework.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\EntityFramework.SqlServer.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\EntityFramework.SqlServerCompact.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.pdb
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.Extras.pdb
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.Extras.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.Platform.pdb
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\GalaSoft.MvvmLight.Platform.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MahApps.Metro.pdb
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MahApps.Metro.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MahApps.Metro.IconPacks.pdb
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MahApps.Metro.IconPacks.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MaterialDesignThemes.Wpf.pdb
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\MaterialDesignThemes.Wpf.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\Microsoft.Practices.ServiceLocation.pdb
+I:\Git\st_abraam\Git\StAbraam\StAbraam\bin\Release\Microsoft.Practices.ServiceLocation.xml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\Resources\Icons.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\Resources\IconsNonShared.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\SearchView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\MainWindow.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\About.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\AddView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddCity.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddClinic.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddCountry.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddLanguage.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddPeriod.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddPhone.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddService.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddSpecialty.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddSubSpecialty.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddSuggestion.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\CountriesView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\CitiesView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\EditClinic.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\DoctorsView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\EditRemoveCollectionView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\LanguagesView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\SearchView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\ServicesView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\SpecialtiesView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\SubSpecialtiesView.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\App.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\خدمة الانباء ابرام الطبية_Content.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\GeneratedInternalTypeHelper.g.cs
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\خدمة الانباء ابرام الطبية_MarkupCompile.cache
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\خدمة الانباء ابرام الطبية_MarkupCompile.lref
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\App.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\MainWindow.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\About.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\AddView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddCity.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddClinic.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddCountry.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddLanguage.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddPeriod.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddPhone.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddService.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddSpecialty.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddSubSpecialty.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\AddSuggestion.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\CountriesView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\CitiesView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\Dialogs\EditClinic.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\DoctorsView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\EditRemoveCollectionView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\LanguagesView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\ServicesView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\SpecialtiesView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\View\SubSpecialtiesView.baml
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\خدمة الانباء ابرام الطبية.g.resources
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\StAbraam.Properties.Resources.resources
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\StAbraam.csproj.GenerateResource.Cache
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\StAbraam.csproj.CoreCompileInputs.cache
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\خدمة الانباء ابرام الطبية.exe
+I:\Git\st_abraam\Git\StAbraam\StAbraam\obj\Release\خدمة الانباء ابرام الطبية.pdb

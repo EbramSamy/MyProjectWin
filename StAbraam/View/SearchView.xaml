@@ -1,0 +1,667 @@
+﻿<UserControl
+    x:Class="StAbraam.View.SearchView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <Style TargetType="ListViewItem">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF2092A8" />
+            </Style.Resources>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Background" Value="#FF2092A8" />
+                    <Setter Property="Foreground" Value="#FF1E83B7" />
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="LightBlue" />
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="LightGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ListView AlternationCount="2" ItemsSource="{Binding DoctorList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Name" />
+                        <GridViewColumn DisplayMemberBinding="{Binding NationalID}" Header="National ID" />
+                        <GridViewColumn DisplayMemberBinding="{Binding DateOfBirth, StringFormat=dd/MM/yyyy}" Header="Date Of Birth" />
+                        <GridViewColumn Header="Phone No">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--<ListView ItemsSource="{Binding Mobiles}"  DisplayMemberPath="MobileNo" FontSize="10"/>-->
+                                    <ItemsControl DisplayMemberPath="MobileNo" ItemsSource="{Binding Mobiles}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Mail" />
+                        <GridViewColumn Header="Country">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl DisplayMemberPath="Country.CountryName" ItemsSource="{Binding Doctor_Countries}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="City">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl DisplayMemberPath="City.CityName" ItemsSource="{Binding Doctor_Cities}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Specialty">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl DisplayMemberPath="Specialty.SpecialtyName" ItemsSource="{Binding Doctor_Specialty}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Sub-Specialty">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl DisplayMemberPath="Sub_Specialty.Sub_SpecialtyName" ItemsSource="{Binding Doctor_Sub_Specialty}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding CurrentOccupation}" Header="Current Occupation" />
+                        <GridViewColumn Header="Spoken Language">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl DisplayMemberPath="Language.LanguageName" ItemsSource="{Binding Doctor_Languages}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding CurrentHospital}" Header="Current Affiliation " />
+                        <GridViewColumn Header=" Clinic ">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding Doctor_Clinic}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock>
+                                                        <Run FontWeight="Bold" Text="Landline : " />
+                                                        <Run Text="{Binding Clinic.Landline}" />
+                                                        <Run Text=" , " />
+                                                    </TextBlock>
+                                                    <TextBlock>
+                                                        <Run FontWeight="Bold" Text="Address : " />
+                                                        <Run Text="{Binding Clinic.Address.BuildingNo}" />
+                                                        <Run Text=" - " />
+                                                    </TextBlock>
+                                                    <TextBlock>
+                                                        <Run Text="{Binding Clinic.Address.StreetName}" />
+                                                        <Run Text=" - " />
+                                                    </TextBlock>
+                                                    <TextBlock>
+                                                        <Run Text="{Binding Clinic.Address.District}" />
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Current Service">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl DisplayMemberPath="Service.ServiceName" ItemsSource="{Binding Doctor_CurrentService}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="To Join Service">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl DisplayMemberPath="Service.ServiceName" ItemsSource="{Binding Doctor_ToJoinServices}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header=" Prefered Period ">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding Doctor_PreferedPeriod}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock>
+                                                        <Run FontWeight="Bold" Text="From : " />
+                                                        <Run Text="{Binding Period.From, StringFormat=dd/MM}" />
+                                                        <Run Text=" : " />
+                                                    </TextBlock>
+                                                    <TextBlock>
+                                                        <Run FontWeight="Bold" Text="To : " />
+                                                        <Run Text="{Binding Period.To, StringFormat=dd/MM}" />
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn Header=" Suggestion ">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding Doctor_Suggestion}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock>
+                                                        <Run FontWeight="Bold" Text="Service : " />
+                                                        <Run Text="{Binding Suggestion.Service.ServiceName}" />
+                                                        <Run Text=" : " />
+                                                    </TextBlock>
+                                                    <TextBlock>
+                                                        <Run FontWeight="Bold" Text="Suggestion : " />
+                                                        <Run Text="{Binding Suggestion.Suggestion1}" />
+                                                    </TextBlock>
+                                                </StackPanel>
+
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding RegistrationDate, StringFormat=dd/MM/yyyy}" Header="Registration Date" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+        <materialDesign:DialogHost Identifier="RootDialog">
+            <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+                <materialDesign:DrawerHost.LeftDrawerContent>
+                    <DockPanel Width="300">
+                        <ToggleButton
+                            x:Name="MenuToggleButton"
+                            Margin="16"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            DockPanel.Dock="Top"
+                            IsChecked="{Binding IsSearchOpen}"
+                            Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <Grid Background="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <materialDesign:PackIcon
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Width="30"
+                                    Height="30"
+                                    Foreground="{Binding ElementName=FullNameTextBox, Path=BorderBrush}"
+                                    Kind="Account" />
+                                <TextBox
+                                    Name="FullNameTextBox"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Name"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding FullName}" />
+
+                                <materialDesign:PackIcon
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Width="30"
+                                    Height="30"
+                                    Foreground="{Binding ElementName=NationalIDTextBox, Path=BorderBrush}"
+                                    Kind="Key" />
+                                <TextBox
+                                    Name="NationalIDTextBox"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="National ID"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding NationalID}" />
+
+                                <TextBlock
+                                    Name="BirthDateTextBlock"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Date Of Birth" />
+                                <DatePicker
+                                    x:Name="DateOfBirthDatePicker"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="100"
+                                    Margin="5"
+                                    SelectedDate="{Binding DateOfBirth}" />
+
+                                <TextBox
+                                    Name="MobileNo"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Mobile No"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding PhoneNo}" />
+
+                                <TextBox
+                                    Name="Email"
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Email"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding Email}" />
+
+
+                                <TextBlock
+                                    Name="CountryTextBlock"
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Country" />
+                                <ComboBox
+                                    Name="CountryComboBox"
+                                    Grid.Row="5"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    DisplayMemberPath="CountryName"
+                                    ItemsSource="{Binding Countries}"
+                                    SelectedItem="{Binding SelectedCountry}" />
+
+                                <TextBlock
+                                    Name="CityTextBlock"
+                                    Grid.Row="6"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="City" />
+                                <ComboBox
+                                    Name="CityComboBox"
+                                    Grid.Row="6"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    DisplayMemberPath="CityName"
+                                    ItemsSource="{Binding Cities}"
+                                    SelectedItem="{Binding SelectedCity}" />
+
+                                <TextBox
+                                    Name="Diocese"
+                                    Grid.Row="7"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Diocese"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding Diocese}" />
+
+                                <TextBlock
+                                    Name="SpecialtyTextBlock"
+                                    Grid.Row="8"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Specialty" />
+                                <ComboBox
+                                    Name="SpecialtyComboBox"
+                                    Grid.Row="8"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    DisplayMemberPath="SpecialtyName"
+                                    ItemsSource="{Binding Specialties}"
+                                    SelectedItem="{Binding SelectedSpecialty}" />
+
+                                <TextBlock
+                                    Name="SubSpecialtyTextBlock"
+                                    Grid.Row="9"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Sub-Specialty" />
+                                <ComboBox
+                                    Name="SubSpecialtyComboBox"
+                                    Grid.Row="9"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    DisplayMemberPath="Sub_SpecialtyName"
+                                    ItemsSource="{Binding SubSpecialties}"
+                                    SelectedItem="{Binding SelectedSubSpecialty}" />
+
+                                <TextBox
+                                    Name="CurrentOccupation"
+                                    Grid.Row="10"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Current Occupation"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding CurrentOccupation}" />
+
+                                <TextBlock
+                                    Name="LanguageTextBlock"
+                                    Grid.Row="11"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Language" />
+                                <ComboBox
+                                    Name="LanguageComboBox"
+                                    Grid.Row="11"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    DisplayMemberPath="LanguageName"
+                                    ItemsSource="{Binding Languages}"
+                                    SelectedItem="{Binding SelectedLanguage}" />
+
+                                <TextBox
+                                    Name="CurrentAffiliation"
+                                    Grid.Row="12"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Current Affiliation (Hospital)"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding CurrentAffiliation}" />
+
+                                <TextBox
+                                    Name="ClinicLandline"
+                                    Grid.Row="13"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Clinic Landline"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding ClinicLandline}" />
+
+                                <TextBox
+                                    Name="ClinicStreetName"
+                                    Grid.Row="14"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Clinic Street Name"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding ClinicStreetName}" />
+
+                                <TextBox
+                                    Name="ClinicDistrict"
+                                    Grid.Row="15"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Clinic District"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding ClinicDistrict}" />
+
+                                <TextBlock
+                                    Name="CurrentServiceTextBlock"
+                                    Grid.Row="16"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Current Sevice" />
+                                <ComboBox
+                                    Name="CurrentServiceComboBox"
+                                    Grid.Row="16"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    DisplayMemberPath="ServiceName"
+                                    ItemsSource="{Binding Services}"
+                                    SelectedItem="{Binding SelectedCurrentService}" />
+
+                                <TextBlock
+                                    Name="ServiceToJoinTextBlock"
+                                    Grid.Row="17"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Sevice To Join" />
+                                <ComboBox
+                                    Name="ServiceToJoinComboBox"
+                                    Grid.Row="17"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    DisplayMemberPath="ServiceName"
+                                    ItemsSource="{Binding Services}"
+                                    SelectedItem="{Binding SelectedToJoinService}" />
+
+                                <TextBlock
+                                    Name="PeriodTextBlock"
+                                    Grid.Row="18"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Prefered Period :" />
+                                <StackPanel
+                                    Grid.Row="18"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    Background="#FFB4D6DA"
+                                    Orientation="Vertical">
+                                    <TextBlock
+                                        Height="35"
+                                        Margin="2"
+                                        VerticalAlignment="Center"
+                                        Text="From :" />
+                                    <DatePicker
+                                        Width="100"
+                                        Margin="5"
+                                        SelectedDate="{Binding From}" />
+                                    <TextBlock
+                                        Height="35"
+                                        Margin="2"
+                                        VerticalAlignment="Center"
+                                        Text="To :" />
+                                    <DatePicker
+                                        Width="100"
+                                        Margin="5"
+                                        SelectedDate="{Binding To}" />
+                                </StackPanel>
+
+                                <TextBox
+                                    Name="SuggestionTextBox"
+                                    Grid.Row="19"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    materialDesign:HintAssist.Hint="Suggestion"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Style="{StaticResource MaterialDesignTextBox}"
+                                    Text="{Binding Suggestion}" />
+
+                                <TextBlock
+                                    Name="RegistrationDateTextBlock"
+                                    Grid.Row="20"
+                                    Grid.Column="0"
+                                    Width="150"
+                                    Height="35"
+                                    Margin="5"
+                                    VerticalAlignment="Center"
+                                    materialDesign:TransitionAssist.DisableTransitions="True"
+                                    Text="Registration Date " />
+                                <DatePicker
+                                    x:Name="RegistrationDatePicker"
+                                    Grid.Row="20"
+                                    Grid.Column="1"
+                                    Width="100"
+                                    Margin="5"
+                                    SelectedDate="{Binding RegistrationDate}" />
+                                <StackPanel
+                                    Grid.Row="21"
+                                    Grid.Column="1"
+                                    Orientation="Horizontal">
+                                    <Button
+                                        Width="90"
+                                        Height="25"
+                                        Background="#FF07B9F0"
+                                        Command="{Binding SearchCommand}"
+                                        Content="Search"
+                                        Foreground="#FFE6EDF0" />
+                                    <Button
+                                        Width="90"
+                                        Height="25"
+                                        Background="#FF07B9F0"
+                                        Command="{Binding ClearCommand}"
+                                        Content="Clear"
+                                        Foreground="#FFE6EDF0" />
+                                </StackPanel>
+
+                            </Grid>
+                        </ScrollViewer>
+
+                    </DockPanel>
+                </materialDesign:DrawerHost.LeftDrawerContent>
+            </materialDesign:DrawerHost>
+        </materialDesign:DialogHost>
+        <materialDesign:PopupBox
+            Grid.Row="1"
+            Margin="32"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
+            <StackPanel>
+                <Button
+                    Command="{Binding OpenSearchCommand}"
+                    Foreground="White"
+                    ToolTip="Search">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF75BDD7" />
+                    </Button.Background>
+                    <materialDesign:PackIcon Kind="Magnify" />
+                </Button>
+                <Button
+                    Command="{Binding SaveCommand}"
+                    Foreground="White"
+                    ToolTip="Save Report As Excel"
+                    Visibility="{Binding Path=CanSave, Converter={StaticResource BoolToVis}}">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF58DFD3" />
+                    </Button.Background>
+                    <iconPacks:PackIconModern Kind="OfficeExcel" />
+                </Button>
+            </StackPanel>
+        </materialDesign:PopupBox>
+        <!--<ListBox ItemsSource="{Binding DoctorList}" MinWidth="100" DisplayMemberPath="FullName">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding RemoveSpokenLanguageCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ListBox>-->
+
+
+    </Grid>
+
+</UserControl>

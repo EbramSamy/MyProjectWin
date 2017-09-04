@@ -1,0 +1,219 @@
+﻿<UserControl
+    x:Class="StAbraam.View.CountriesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Model="clr-namespace:StAbraam.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="countryViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:Country}, CreateList=True}" />
+        <RoutedUICommand x:Key="FirstCommand" Text="First" />
+        <RoutedUICommand x:Key="LastCommand" Text="Last" />
+        <RoutedUICommand x:Key="NextCommand" Text="Next" />
+        <RoutedUICommand x:Key="PreviousCommand" Text="Previous" />
+        <RoutedUICommand x:Key="DeleteCounryCommand" Text="Delete Country" />
+        <RoutedUICommand x:Key="UpdateCommand" Text="Update" />
+        <RoutedUICommand x:Key="AddCommand" Text="Add" />
+        <RoutedUICommand x:Key="CancelCommand" Text="Cancel" />
+    </UserControl.Resources>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource FirstCommand}" Executed="FirstCommandHandler" />
+        <CommandBinding Command="{StaticResource LastCommand}" Executed="LastCommandHandler" />
+        <CommandBinding Command="{StaticResource NextCommand}" Executed="NextCommandHandler" />
+        <CommandBinding Command="{StaticResource PreviousCommand}" Executed="PreviousCommandHandler" />
+        <CommandBinding Command="{StaticResource DeleteCounryCommand}" Executed="DeleteCountryCommandHandler" />
+        <CommandBinding Command="{StaticResource UpdateCommand}" Executed="UpdateCommandHandler" />
+        <CommandBinding Command="{StaticResource AddCommand}" Executed="AddCommandHandler" />
+        <CommandBinding Command="{StaticResource CancelCommand}" Executed="CancelCommandHandler" />
+    </UserControl.CommandBindings>
+    <Grid DataContext="{StaticResource countryViewSource}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Height="36"
+            VerticalAlignment="Top"
+            Background="Gainsboro"
+            DataContext="{StaticResource countryViewSource}"
+            Orientation="Horizontal"
+            d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Button
+                Name="btnFirst"
+                Command="{StaticResource FirstCommand}"
+                Content="|◄" />
+            <Button
+                Name="btnPrev"
+                Command="{StaticResource PreviousCommand}"
+                Content="◄" />
+            <Button
+                Name="btnNext"
+                Command="{StaticResource NextCommand}"
+                Content="►" />
+            <Button
+                Name="btnLast"
+                Command="{StaticResource LastCommand}"
+                Content="►|" />
+            <Button
+                Name="btnAdd"
+                Width="120"
+                Click="btnAdd_Click"
+                Content="Add Country"
+                FontSize="11" />
+            <Button
+                Name="btnDelete"
+                Command="{StaticResource DeleteCounryCommand}"
+                Content="Delete Country"
+                FontSize="11" />
+            <Button
+                Name="btnEdit"
+                Command="{StaticResource AddCommand}"
+                Content="Edit Country"
+                FontSize="11" />
+            <Button
+                Name="btnUpdate"
+                Command="{StaticResource UpdateCommand}"
+                Content="Commit"
+                FontSize="11" />
+            <Button
+                Name="btnCancel"
+                Command="{StaticResource CancelCommand}"
+                Content="Cancel"
+                FontSize="11" />
+        </StackPanel>
+        <Grid
+            x:Name="existingCountryGrid"
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="Red"
+            DataContext="{StaticResource countryViewSource}">
+            <ListView
+                x:Name="countryListView"
+                ItemsSource="{Binding}"
+                SelectionMode="Single">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="countryIDColumn" Header="Country ID">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding CountryID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="countryNameColumn" Header="Country Name">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding CountryName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="  Cities ">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding Cities}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Margin="2" Text="{Binding CityID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                                    <TextBlock Margin="2" Text="{Binding CityName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+                <!--<ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>-->
+            </ListView>
+        </Grid>
+
+        <Grid
+            x:Name="newCountryGrid"
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="Yellow"
+            Visibility="Collapsed">
+            <ListView
+                x:Name="newcountryListView"
+                ItemsSource="{Binding}"
+                SelectionMode="Single">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="newCountryIDColumn" Header="Country ID">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox
+                                        VerticalAlignment="Center"
+                                        Background="#FF7CB7D1"
+                                        Text="{Binding CountryID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="newCountryNameColumn" Header="Country Name">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox
+                                        Name="add_country_name_textBox"
+                                        VerticalAlignment="Center"
+                                        Background="#FF7CB7D1"
+                                        Text="{Binding CountryName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="  Cities ">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding Cities}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Background="#FF7CB7D1" Text="{Binding CityID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                                    <TextBlock
+                                                        x:Name="newCityNameColumn"
+                                                        Background="#FF7CB7D1"
+                                                        Text="{Binding CityName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+                <!--<ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>-->
+            </ListView>
+        </Grid>
+    </Grid>
+</UserControl>
